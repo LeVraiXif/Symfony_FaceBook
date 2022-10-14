@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets_global %}
+
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{{ asset('css/facebook.css') }}" type="text/css" rel="stylesheet"> 
+        {% endblock %}
+{% block body %}
+{{ form_start(registrationForm) }}
+<div id="main-wrapper" class="container">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="card border-0">
+                <div class="card-body p-0">
+                    <div class="row no-gutters">
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="mb-5">
+                                    <h3 class="h4 font-weight-bold text-theme">Register</h3>
+                                </div>
+                                    <div class="form-group">
+                                        {{ form_row(registrationForm.username) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_row(registrationForm.mail) }}
+                                    </div>
+                                    <div class="form-group mb-5">
+                                        {{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_row(registrationForm.agreeTerms) }}
+                                    </div>
+                                    <input type="submit" class="btn btn-theme" value="Register">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 d-none d-lg-inline-block">
+                            <div class="account-block rounded-right">
+                                <div class="overlay rounded-right"></div>
+                                <div class="account-testimonial">
+                                    <h4 class="text-white mb-4">This  beautiful theme yours!</h4>
+                                    <p class="lead text-white">"Best investment i made for a long time. Can only recommend it for other users."</p>
+                                    <p>- Admin User</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+
+            <p class="text-muted text-center mt-3 mb-0">You have an account ? <a href="login" class="text-primary ml-1">Login</a></p>
+
+            <!-- end row -->
+
+        </div>
+        <!-- end col -->
+    </div>
+    <!-- Row -->
+</div>
+    {{ form_end(registrationForm) }}
+{% endblock %}

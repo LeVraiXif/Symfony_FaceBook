@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+                                
+    <div class="panel-body">
+        <p class="lead"> {{post.user.username}} </p>
+        <hr>
+        <p>{{ post.message }}</p>
+        <hr>
+        <p>{{post.user.follow}} {% if post.user.follow == 0 %}Follower{% else %}Followers{% endif %} , {{post.user.publication}} {% if post.user.publication == 0 %}Post{% else %}Posts{% endif %}</p> 
+    </div>
+</div>
