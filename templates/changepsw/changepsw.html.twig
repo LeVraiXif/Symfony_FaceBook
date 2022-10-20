@@ -14,10 +14,9 @@
 {% endblock %}
 
 {% block body %}
-
-<form method="post">
  <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 						<div id="main-wrapper" class="container">
+{{ form_start(RePasswordForm) }}
     <div class="row justify-content-center">
         <div class="col-xl-10">
             <div class="card border-0">
@@ -29,12 +28,12 @@
                                     <h3 class="h4 font-weight-bold text-theme">Change password</h3>
                                 </div>
                                 <h6 class="h5 mb-0">Change password</h6>
-                                <form>
+                                
                                     <div class="form-group mb-5">
                                         {{ form_row(RePasswordForm.RePassword, {label: 'Password'}) }}
                                     </div>
                                     <input type="submit" class="btn btn-theme" value="Submit">
-                                </form>
+                                
                             </div>
                         </div>
 
@@ -61,7 +60,7 @@
 </div>
 
 
-</form>
+
 
 
 
@@ -76,6 +75,6 @@
         </div>
     #}
 
-
+{{ form_end(RePasswordForm) }}
 
 {% endblock %}

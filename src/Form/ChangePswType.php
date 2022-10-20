@@ -56,6 +56,8 @@ class ChangePswType extends AbstractType
                 ],
                 'required' => true,
                 'type' => PasswordType::class,
+                'first_options' => array('label'=>'password'),
+                'second_options' => array('label'=>'confirm password'),
             ])
         ;
     }

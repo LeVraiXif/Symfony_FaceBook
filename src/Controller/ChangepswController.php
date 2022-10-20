@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\ChangePswType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,9 +16,12 @@ class ChangepswController extends AbstractController
     public function index(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(ChangePswType::class, $user);
         $form->handleRequest($request);
 
+        //var_dump($form->isSubmitted());
+        //var_dump($form->isValid());
+        //exit;
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -26,11 +30,12 @@ class ChangepswController extends AbstractController
                     $form->get('RePassword')->getData()
                 )
             );
-
+            
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
         }
+        
         return $this->render('changepsw/changepsw.html.twig', [
             'RePasswordForm' => $form->createView(),
         ]);
